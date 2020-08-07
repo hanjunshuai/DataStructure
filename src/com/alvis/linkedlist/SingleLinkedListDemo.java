@@ -61,15 +61,19 @@ class SingleLinkedList {
 	// 插入
 	public void addByNo(HeroNode heroNode) {
 		HeroNode temp = head;
+		// 表示添加的编号是否存在，默认是false
 		boolean flag = false;
 		while (true) {
+			// 说明temp已经在链表的最后
 			if (temp.next == null) {
 				break;
 			}
-
+			
+			// 位置找到，就在temp的后面插入
 			if (temp.next.no > heroNode.no) {
 				break;
 			} else if (temp.next.no == heroNode.no) {
+				// 说明希望添加的heroNode的编号已存在
 				flag = true;
 				break;
 			}
@@ -78,8 +82,9 @@ class SingleLinkedList {
 		}
 
 		if (flag) {
-			
+			System.out.println("准备加入的编号已经存在，不能加入!~~~~" + heroNode.no);
 		} else {
+			// 插入链表中，temp的后面
 			heroNode.next = temp.next;
 			temp.next = heroNode;
 		}
@@ -88,7 +93,7 @@ class SingleLinkedList {
 	// 改
 	public void update(HeroNode heroNode) {
 		HeroNode temp = head;
-		boolean flag = false;
+		boolean flag = false;//表示是否找到该节点
 		while (true) {
 			if (temp.next == null) {
 				break;
@@ -113,7 +118,7 @@ class SingleLinkedList {
 	// 删
 	public void delete(int no) {
 		HeroNode temp = head;
-		boolean flag = false;
+		boolean flag = false; //表示是否找到待删除的节点
 		while (true) {
 			if (temp.next == null) {
 				break;
